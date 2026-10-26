@@ -102,6 +102,25 @@
 .swipe { clip-path: inset(0 100% 0 0); transition: clip-path 760ms var(--sc-ease-out); }
 .swipe.in { clip-path: inset(0 0 0 0); }
 
+/* ------------------------------------------------------ 3b. SMART CONTROLS */
+.smart { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(2rem, 5vw, 5rem); align-items: center; }
+.smart .h2 { margin-top: var(--sc-3); max-width: 14ch; }
+.smart .ticks { list-style: none; padding: 0; margin: var(--sc-5) 0 0; }
+.smart__check { margin: var(--sc-5) 0 0; max-width: 46ch; color: var(--paper-soft); }
+.smart .cta-row { align-items: center; }
+.smart__draw { margin: 0; padding: clamp(1rem, 3vw, 2rem); border-radius: calc(var(--r) + 6px); background: #fff; box-shadow: var(--sc-e3); }
+.tstat { width: 100%; height: auto; }
+.tstat .grid { stroke: var(--line-light); stroke-width: 1; opacity: 0.12; fill: none; }
+.tstat .ln { fill: none; stroke: var(--paper-ink); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+.tstat .soft { stroke: var(--line-light); stroke-width: 2; }
+.tstat .wave { stroke: var(--copper-deep); stroke-width: 3; }
+.tstat .arc { fill: none; stroke: var(--copper-deep); stroke-width: 9; stroke-linecap: round; stroke-dasharray: 1 1; stroke-dashoffset: 1; transition: stroke-dashoffset 1400ms var(--sc-ease-out) 200ms; }
+.tstat .arc--sm { stroke-width: 6; transition-delay: 700ms; }
+.drawin.in .tstat .arc { stroke-dashoffset: 0; }
+.tstat .knob { fill: var(--copper-deep); opacity: 0; transition: opacity 300ms var(--sc-ease-out) 1400ms; }
+.drawin.in .tstat .knob { opacity: 1; }
+.tstat .cap { fill: var(--paper-soft); font: 600 17px var(--sc-font-text); letter-spacing: 0.08em; text-transform: uppercase; }
+
 /* ----------------------------------------------------------- 4. THE BLOKE */
 #bloke .sc-stage { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr); gap: clamp(2rem, 5vw, 5rem); align-items: center; padding: var(--bar-h) var(--sc-gutter) 2rem; height: calc(100svh - var(--bar-h)); top: var(--bar-h); }
 .bloke__lines { margin-top: var(--sc-4); }
@@ -146,7 +165,8 @@
   .chips { gap: 0.4rem; }
   .chip { min-height: 2.75rem; padding: 0.4rem 0.7rem; }
   .finder { grid-template-columns: 1fr; }
-  .jobs { grid-template-columns: 1fr; }
+  .jobs, .smart { grid-template-columns: 1fr; }
+  .smart__draw { order: -1; padding: 0.75rem; }
   #bloke .sc-stage { grid-template-columns: 1fr; align-content: center; padding-bottom: calc(5rem + env(safe-area-inset-bottom)); }
   .ph--bloke { display: none; }
   #where .sc-stage { padding-bottom: 4.5rem; gap: var(--sc-5); }
@@ -169,5 +189,6 @@
   .swipe { clip-path: none; transition: none; }
   .answer.is-in { animation: none; }
   .tile { transition: none; }
+  .tstat .arc, .tstat .knob { transition: none; }
 }
 .house--done .mk circle { fill: var(--copper); }

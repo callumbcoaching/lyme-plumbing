@@ -40,7 +40,7 @@ ScrollCraft.mount(document.body);
     ['pump', 0.46, 0.53, 'Pump and valves: <em>me.</em>'],
     ['rad1', 0.53, 0.61, 'Radiators: <em>me.</em>'],
     ['rad2', 0.61, 0.67, 'Radiators: <em>me.</em>'],
-    ['stat', 0.67, 0.73, 'Thermostat and controls: <em>me.</em>'],
+    ['stat', 0.67, 0.73, 'Smart thermostat and controls: <em>me.</em>'],
     ['toboiler', 0.73, 0.84, 'And the boiler?'],
   ];
   var DONE_AT = 0.86, ANGLE_AT = 0.93;
@@ -117,7 +117,7 @@ ScrollCraft.mount(document.body);
   }
 
   /* ----------------------------------------------------- 3. swipe-ins */
-  var swipes = [].slice.call(document.querySelectorAll('.swipe'));
+  var swipes = [].slice.call(document.querySelectorAll('.swipe, .drawin'));
   function checkSwipes() {
     swipes = swipes.filter(function (s, i) {
       if (reduce || s.getBoundingClientRect().top < innerHeight * 0.9) {
